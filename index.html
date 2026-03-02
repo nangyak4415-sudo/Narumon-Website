@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1285,25 +1285,549 @@
         }
 
         /* =========================================
-           ABOUT US (EXECUTIVE HR VISION) REVAMP
+           ABOUT US - TIMELINE S-CURVE DESIGN
            ========================================= */
-        #about-page { max-width: 1200px; padding: 120px 20px 80px; }
-        .about-section { margin-bottom: 80px; animation: fadeUp 0.8s var(--easing) forwards; opacity: 0; }
-        
-        .about-hero { text-align: center; margin-bottom: 100px; }
-        .about-title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; font-family: var(--font-display); background: linear-gradient(90deg, var(--color-primary), #00ffa3); -webkit-background-clip: text; color: transparent; margin-bottom: 24px; text-shadow: 0 0 30px rgba(0, 243, 255, 0.3); }
-        .about-subtitle { font-size: 1.25rem; font-weight: 400; color: #fff; line-height: 1.6; max-width: 800px; margin: 0 auto 32px; }
-        .vision-statement { font-size: 1.5rem; font-weight: 600; color: var(--color-primary); font-style: italic; max-width: 900px; margin: 0 auto 48px; text-shadow: 0 0 15px rgba(0, 243, 255, 0.2); }
-        
-        .exec-message-box { background: rgba(255,255,255,0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 48px; max-width: 900px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.3), inset 0 0 20px rgba(0,243,255,0.05); text-align: left; }
-        .exec-message-box h3 { font-size: 1.8rem; font-family: var(--font-display); color: #fff; margin-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 16px; }
-        .exec-message-box p { font-size: 1.1rem; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 16px; }
-        .exec-list { list-style: none; margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
-        .exec-list li { font-size: 1.1rem; color: var(--color-success); font-weight: 600; display: flex; align-items: center; gap: 12px; }
-        .exec-list li::before { content: '•'; color: var(--color-primary); font-size: 1.5rem; }
+        #about-page { 
+            max-width: 100%; 
+            padding: 120px 20px 80px; 
+            position: relative;
+            background: linear-gradient(180deg, rgba(10, 20, 40, 0.5) 0%, rgba(20, 30, 50, 0.5) 100%);
+        }
 
-        .about-section-title { font-size: 2.25rem; font-family: var(--font-display); font-weight: 700; color: #fff; margin-bottom: 40px; text-align: center; text-transform: uppercase; letter-spacing: 2px; }
-        .about-section-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--color-primary); margin: 16px auto 0; box-shadow: 0 0 10px var(--color-primary); }
+        .about-timeline-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .about-page-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 900;
+            font-family: var(--font-display);
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Numbered Timeline Layout */
+        .numbered-timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Central Timeline Line */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #6366f1, #a855f7, #06b6d4, #10b981, #6366f1);
+            transform: translateX(-50%);
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4), 0 0 40px rgba(168, 85, 247, 0.2);
+        }
+
+        /* Timeline Step Container */
+        .timeline-step {
+            display: flex;
+            margin-bottom: 80px;
+            opacity: 0;
+            animation: fadeIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            align-items: center;
+            position: relative;
+        }
+
+        .timeline-step:nth-child(2) { animation-delay: 0.1s; }
+        .timeline-step:nth-child(3) { animation-delay: 0.25s; }
+        .timeline-step:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-step:nth-child(5) { animation-delay: 0.55s; }
+        .timeline-step:nth-child(6) { animation-delay: 0.7s; }
+        .timeline-step:nth-child(7) { animation-delay: 0.85s; }
+
+        /* Left Timeline Items */
+        .timeline-left {
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+
+        .timeline-left .step-number {
+            order: 2;
+            margin-left: 40px;
+            margin-right: 0;
+        }
+
+        .timeline-left .card-glass {
+            order: 1;
+            max-width: 420px;
+            width: 100%;
+            margin-right: 20px;
+        }
+
+        /* Right Timeline Items */
+        .timeline-right {
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+
+        .timeline-right .step-number {
+            order: 1;
+            margin-right: 40px;
+            margin-left: 0;
+        }
+
+        .timeline-right .card-glass {
+            order: 2;
+            max-width: 420px;
+            width: 100%;
+            margin-left: 20px;
+        }
+
+        /* Step Number Styling */
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 900;
+            backdrop-filter: blur(20px);
+            border: 2px solid;
+            position: relative;
+            flex-shrink: 0;
+            font-family: var(--font-display);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.3), inset 0 0 20px rgba(99, 102, 241, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .timeline-step:nth-child(2) .step-number {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(99, 102, 241, 0.1));
+            border-color: #6366f1;
+            color: #6366f1;
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.4), inset 0 0 20px rgba(99, 102, 241, 0.15);
+        }
+
+        .timeline-step:nth-child(3) .step-number {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(168, 85, 247, 0.1));
+            border-color: #a855f7;
+            color: #a855f7;
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.4), inset 0 0 20px rgba(168, 85, 247, 0.15);
+        }
+
+        .timeline-step:nth-child(4) .step-number {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(6, 182, 212, 0.1));
+            border-color: #06b6d4;
+            color: #06b6d4;
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.4), inset 0 0 20px rgba(6, 182, 212, 0.15);
+        }
+
+        .timeline-step:nth-child(5) .step-number {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(16, 185, 129, 0.1));
+            border-color: #10b981;
+            color: #10b981;
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.4), inset 0 0 20px rgba(16, 185, 129, 0.15);
+        }
+
+        .timeline-step:nth-child(6) .step-number {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(168, 85, 247, 0.1));
+            border-color: #6366f1;
+            color: #6366f1;
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.4), inset 0 0 20px rgba(99, 102, 241, 0.15);
+        }
+
+        .timeline-step:nth-child(7) .step-number {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(6, 182, 212, 0.1));
+            border-color: #a855f7;
+            color: #a855f7;
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.4), inset 0 0 20px rgba(168, 85, 247, 0.15);
+        }
+
+        .timeline-step:hover .step-number {
+            transform: scale(1.15) rotate(-10deg);
+            box-shadow: 0 0 50px rgba(99, 102, 241, 0.6), 0 0 100px rgba(168, 85, 247, 0.3), inset 0 0 30px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Luxury Glassmorphism Card with Gradient Border */
+        .card-glass {
+            background: linear-gradient(135deg, rgba(10, 15, 30, 0.6), rgba(15, 23, 42, 0.5));
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 2px solid rgba(99, 102, 241, 0.4);
+            border-radius: 24px;
+            padding: 36px;
+            box-shadow: 
+                0 25px 60px rgba(0, 0, 0, 0.5),
+                inset 0 0 40px rgba(99, 102, 241, 0.08),
+                inset 0 0 40px rgba(168, 85, 247, 0.04),
+                0 0 40px rgba(99, 102, 241, 0.1),
+                0 0 80px rgba(168, 85, 247, 0.05);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-glass::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, #6366f1, #a855f7, #06b6d4, #10b981, #6366f1);
+            background-size: 300% auto;
+            border-radius: 24px;
+            z-index: -2;
+            opacity: 0;
+            animation: luxeGradientBorder 4s linear infinite;
+            transition: opacity 0.5s ease;
+            filter: blur(0.5px);
+        }
+
+        .card-glass::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.08) 50%, rgba(6, 182, 212, 0.05) 100%);
+            z-index: -1;
+            border-radius: 22px;
+        }
+
+        .card-glass:hover {
+            border-color: rgba(168, 85, 247, 0.8);
+            box-shadow: 
+                0 40px 100px rgba(0, 0, 0, 0.6),
+                inset 0 0 40px rgba(99, 102, 241, 0.12),
+                inset 0 0 40px rgba(168, 85, 247, 0.08),
+                0 0 60px rgba(99, 102, 241, 0.25),
+                0 0 120px rgba(168, 85, 247, 0.15),
+                0 0 80px rgba(6, 182, 212, 0.1);
+            transform: translateY(-12px) scale(1.02);
+        }
+
+        .card-glass:hover::before {
+            opacity: 0.6;
+            animation: luxeGradientBorder 2s linear infinite;
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite, iconGlow 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.4));
+            transform-origin: center;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-card:hover .card-icon {
+            animation: float 2s ease-in-out infinite, iconGlow 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.8)) drop-shadow(0 0 40px rgba(168, 85, 247, 0.6));
+            transform: scale(1.15) rotate(8deg);
+        }
+
+        .card-title {
+            font-size: 1.7rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(90deg, #6366f1 0%, #a855f7 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-card:hover .card-title {
+            background: linear-gradient(90deg, #a855f7 0%, #06b6d4 50%, #10b981 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow: 0 0 50px rgba(99, 102, 241, 0.6), 0 0 100px rgba(168, 85, 247, 0.4);
+        }
+
+        .card-content {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: rgba(226, 232, 240, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-card:hover .card-content {
+            color: rgba(226, 232, 240, 1);
+        }
+
+        .card-content p {
+            margin-bottom: 12px;
+        }
+
+        .card-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .card-list li {
+            padding-left: 24px;
+            position: relative;
+            margin-bottom: 12px;
+            color: rgba(226, 232, 240, 0.8);
+        }
+
+        .card-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            background: linear-gradient(90deg, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: bold;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-card:hover .card-list li::before {
+            background: linear-gradient(90deg, #a855f7, #06b6d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            transform: scale(1.3) translateX(2px);
+            filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.6));
+        }
+
+        .values-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .value-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(168, 85, 247, 0.25));
+            border: 2px solid rgba(99, 102, 241, 0.6);
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 24px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(15px);
+            box-shadow: 
+                0 0 20px rgba(99, 102, 241, 0.2),
+                inset 0 0 20px rgba(99, 102, 241, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-badge::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(6, 182, 212, 0.2));
+            border-radius: 22px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .value-badge:hover {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(168, 85, 247, 0.4));
+            border-color: rgba(168, 85, 247, 1);
+            box-shadow: 
+                0 0 30px rgba(99, 102, 241, 0.5),
+                0 0 60px rgba(168, 85, 247, 0.3),
+                inset 0 0 30px rgba(99, 102, 241, 0.15);
+            transform: translateY(-4px) scale(1.08);
+        }
+
+        .value-badge:hover::before {
+            opacity: 1;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes luxeGradientBorder {
+            0% {
+                background-position: 0% center;
+            }
+            100% {
+                background-position: 300% center;
+            }
+        }
+
+        @keyframes iconGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.4));
+            }
+            50% {
+                filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.6));
+            }
+        }
+
+        @keyframes gradientFlow {
+            0% {
+                stroke-dashoffset: 1000;
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                stroke-dashoffset: 0;
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes pulsing {
+            0%, 100% {
+                r: 6px;
+                opacity: 1;
+            }
+            50% {
+                r: 10px;
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-page-title {
+                margin-bottom: 40px;
+                font-size: 2.5rem;
+            }
+
+            .numbered-timeline {
+                padding: 40px 15px;
+            }
+
+            .timeline-line {
+                left: 30px;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+            }
+
+            .timeline-step {
+                flex-direction: column !important;
+                align-items: flex-start;
+                margin-bottom: 60px;
+                margin-left: 90px;
+            }
+
+            .timeline-left .step-number,
+            .timeline-right .step-number {
+                position: absolute;
+                left: -45px;
+                top: -15px;
+                margin: 0 !important;
+                width: 50px;
+                height: 50px;
+                font-size: 1.4rem;
+            }
+
+            .timeline-left .card-glass,
+            .timeline-right .card-glass {
+                max-width: 100% !important;
+                width: 100%;
+                margin: 0 !important;
+            }
+
+            .card-glass {
+                padding: 24px;
+            }
+
+            .card-title {
+                font-size: 1.3rem;
+            }
+
+            .card-icon {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #about-page {
+                padding: 80px 12px 60px;
+            }
+
+            .about-page-title {
+                font-size: 2rem;
+                letter-spacing: 1px;
+            }
+
+            .numbered-timeline {
+                padding: 30px 10px;
+            }
+
+            .timeline-line {
+                left: 20px;
+                width: 2px;
+            }
+
+            .timeline-step {
+                margin-left: 70px;
+                margin-bottom: 50px;
+            }
+
+            .timeline-left .step-number,
+            .timeline-right .step-number {
+                left: -35px;
+                top: -15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .timeline-left .card-glass,
+            .timeline-right .card-glass {
+                max-width: 100% !important;
+                width: 100%;
+            }
+
+            .card-glass {
+                padding: 20px;
+            }
+            }
+
+            .card-title {
+                font-size: 1.1rem;
+            }
+
+            .card-icon {
+                font-size: 2rem;
+            }
+
+            .card-content {
+                font-size: 0.9rem;
+            }
+        }
 
         .pillars-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; }
         .pillar-card { background: rgba(5, 10, 20, 0.6); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 32px; flex: 1 1 300px; max-width: 380px; transition: all 0.3s ease; opacity: 0; transform: translateY(20px); }
@@ -2372,11 +2896,104 @@
 
         <!-- ABOUT US (EXECUTIVE HR VISION) -->
         <main id="about-page">
-            
-            <!-- Section 1: Vision -->
-            <section class="about-section about-hero animate">
-                <h1 class="about-title i18n" data-th="Executive HR Vision 2025–2027" data-en="Executive HR Vision 2025–2027">Executive HR Vision 2025–2027</h1>
-                <h2 class="about-subtitle i18n" data-th="ขับเคลื่อนองค์กรด้วยกลยุทธ์ HR Digital Transformation<br>เพื่อสร้าง People-Centric Organization ที่เติบโตอย่างยั่งยืน" data-en="Driving the organization with HR Digital Transformation<br>to build a sustainable People-Centric Organization">ขับเคลื่อนองค์กรด้วยกลยุทธ์ HR Digital Transformation<br>เพื่อสร้าง People-Centric Organization ที่เติบโตอย่างยั่งยืน</h2>
+            <div class="about-timeline-container">
+                <h1 class="about-page-title">ABOUT US</h1>
+                
+                <!-- Numbered Timeline -->
+                <div class="numbered-timeline">
+                    <!-- Central Timeline Line -->
+                    <div class="timeline-line"></div>
+
+                    <!-- Card 1: เกี่ยวกับเรา -->
+                    <div class="timeline-step timeline-left">
+                        <div class="step-number">01</div>
+                        <div class="card-glass">
+                            <div class="card-icon">🌟</div>
+                            <h2 class="card-title">เกี่ยวกับเรา</h2>
+                            <div class="card-content">
+                                <p>Website HR ก่อตั้งขึ้นด้วยเป้าหมายในการยกระดับการบริหารทรัพยากรบุคคลให้ทันสมัย เข้าใจง่าย และเข้าถึงได้สำหรับทุกองค์กร</p>
+                                <p>เราเชื่อว่า "บุคลากร" คือหัวใจสำคัญของความสำเร็จองค์กร ดังนั้นระบบของเราจึงถูกออกแบบมาเพื่อช่วยให้องค์กรบริหารจัดการพนักงานได้อย่างมีประสิทธิภาพ โปร่งใส และแม่นยำ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Vision -->
+                    <div class="timeline-step timeline-right">
+                        <div class="step-number">02</div>
+                        <div class="card-glass">
+                            <div class="card-icon">🚀</div>
+                            <h2 class="card-title">Vision (วิสัยทัศน์)</h2>
+                            <div class="card-content">
+                                <p>มุ่งเป็นแพลตฟอร์ม HR อัจฉริยะที่ช่วยให้องค์กรทุกขนาดสามารถบริหารบุคลากรได้อย่างมืออาชีพ ด้วยเทคโนโลยีที่ทันสมัย ปลอดภัย และใช้งานง่าย</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Mission -->
+                    <div class="timeline-step timeline-left">
+                        <div class="step-number">03</div>
+                        <div class="card-glass">
+                            <div class="card-icon">🎯</div>
+                            <h2 class="card-title">Mission (พันธกิจ)</h2>
+                            <div class="card-content">
+                                <ul class="card-list">
+                                    <li>พัฒนาระบบที่ช่วยลดความซับซ้อนในการจัดการพนักงาน</li>
+                                    <li>สร้างเครื่องมือวิเคราะห์ข้อมูลที่ช่วยให้ผู้บริหารตัดสินใจได้อย่างแม่นยำ</li>
+                                    <li>สนับสนุนการเติบโตขององค์กรผ่านการบริหารบุคลากรอย่างมีประสิทธิภาพ</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Core Values -->
+                    <div class="timeline-step timeline-right">
+                        <div class="step-number">04</div>
+                        <div class="card-glass">
+                            <div class="card-icon">💡</div>
+                            <h2 class="card-title">Core Values (ค่านิยมองค์กร)</h2>
+                            <div class="card-content">
+                                <div class="values-badges">
+                                    <span class="value-badge">ความโปร่งใส</span>
+                                    <span class="value-badge">ความแม่นยำ</span>
+                                    <span class="value-badge">นวัตกรรม</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Key Features -->
+                    <div class="timeline-step timeline-left">
+                        <div class="step-number">05</div>
+                        <div class="card-glass">
+                            <div class="card-icon">📊</div>
+                            <h2 class="card-title">จุดเด่นของระบบ</h2>
+                            <div class="card-content">
+                                <ul class="card-list">
+                                    <li>ระบบจัดการข้อมูลพนักงานแบบรวมศูนย์</li>
+                                    <li>Dashboard แสดงผลข้อมูลแบบ Real-time</li>
+                                    <li>รองรับการวิเคราะห์ข้อมูลเพื่อการวางแผนเชิงกลยุทธ์</li>
+                                    <li>ออกแบบให้ใช้งานง่าย ลดขั้นตอนที่ไม่จำเป็น</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Security -->
+                    <div class="timeline-step timeline-right">
+                        <div class="step-number">06</div>
+                        <div class="card-glass">
+                            <div class="card-icon">🔒</div>
+                            <h2 class="card-title">ความมั่นคงและความปลอดภัย</h2>
+                            <div class="card-content">
+                                <p>เราให้ความสำคัญกับการปกป้องข้อมูลบุคลากรเป็นอันดับแรก โดยออกแบบระบบให้มีมาตรฐานความปลอดภัยที่เหมาะสม ลดความเสี่ยงในการเข้าถึงข้อมูลโดยไม่ได้รับอนุญาต และสร้างความเชื่อมั่นให้กับองค์กรผู้ใช้งาน</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <main id="reports-page">
                 <div class="vision-statement i18n" data-th="“ยกระดับระบบบริหารทรัพยากรบุคคลสู่แพลตฟอร์มดิจิทัลเต็มรูปแบบ ที่เชื่อมโยงข้อมูล บุคลากร และกลยุทธ์องค์กรเข้าด้วยกันอย่างชาญฉลาด”" data-en="“Elevating HR management to a fully digital platform that intelligently connects data, people, and corporate strategy.”">“ยกระดับระบบบริหารทรัพยากรบุคคลสู่แพลตฟอร์มดิจิทัลเต็มรูปแบบ ที่เชื่อมโยงข้อมูล บุคลากร และกลยุทธ์องค์กรเข้าด้วยกันอย่างชาญฉลาด”</div>
                 
                 <div class="exec-message-box">
@@ -2391,10 +3008,10 @@
                     </ul>
                 </div>
             </section>
+        </main>
 
-            <!-- Section 2: Framework -->
-            <section class="about-section about-framework">
-                <h2 class="about-section-title i18n" data-th="HR Digital Transformation Framework" data-en="HR Digital Transformation Framework">HR Digital Transformation Framework</h2>
+        <main id="reports-page">
+            <header class="reports-header">
                 <div class="pillars-grid">
                     <div class="pillar-card animate">
                         <div class="pillar-icon">📊</div>
